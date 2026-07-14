@@ -1,0 +1,26 @@
+# Game files (ha lokálisan tárolod őket)
+*.exe
+*.bin
+*.iso
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS-specific
+node_modules/
+__pycache__/
+.env
+
+# Nagyméretű fájlok
+games/**/*.{exe,bin,iso}
