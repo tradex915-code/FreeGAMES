@@ -1,0 +1,544 @@
+/* ==================== VARIABLES ==================== */
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --accent-color: #0f3460;
+    --highlight-color: #e94560;
+    --text-color: #eaeaea;
+    --text-muted: #b0b0b0;
+    --border-color: #2a2a3e;
+    --success-color: #00d4ff;
+    --warning-color: #ff6b35;
+}
+
+/* ==================== RESET ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==================== BACKGROUND TEXTURE ==================== */
+.background-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(135deg, rgba(15, 52, 96, 0.5) 0%, rgba(26, 26, 46, 0.8) 50%, rgba(22, 33, 62, 0.6) 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(233, 69, 96, 0.03) 2px, rgba(233, 69, 96, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 212, 255, 0.02) 2px, rgba(0, 212, 255, 0.02) 4px);
+    z-index: -1;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+    padding: 3rem 2rem;
+    text-align: center;
+    border-bottom: 3px solid var(--highlight-color);
+    box-shadow: 0 8px 32px rgba(233, 69, 96, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+    animation: floatGlow 8s ease-in-out infinite;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.logo {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--success-color), var(--highlight-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: var(--success-color);
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+@keyframes floatGlow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, 30px); }
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+    background-color: rgba(22, 33, 62, 0.95);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--highlight-color);
+    backdrop-filter: blur(10px);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--highlight-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--success-color);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    padding: 6rem 2rem;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(15, 52, 96, 0.8) 0%, rgba(26, 26, 46, 0.6) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--success-color);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--highlight-color), #ff4757);
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+    border: 2px solid transparent;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(233, 69, 96, 0.6);
+    border-color: var(--success-color);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* ==================== GAMES SECTION ==================== */
+.games {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--success-color);
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--highlight-color), var(--success-color));
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* ==================== GAME CARD ==================== */
+.game-card {
+    background: linear-gradient(135deg, rgba(22, 33, 62, 0.8) 0%, rgba(26, 26, 46, 0.9) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--success-color), var(--highlight-color), transparent);
+    animation: slideRight 2s ease-in-out infinite;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--highlight-color);
+    box-shadow: 0 12px 40px rgba(233, 69, 96, 0.3);
+}
+
+@keyframes slideRight {
+    0% { width: 0; }
+    50% { width: 100%; }
+    100% { width: 0; }
+}
+
+.game-header {
+    background: linear-gradient(135deg, var(--accent-color) 0%, rgba(15, 52, 96, 0.8) 100%);
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--highlight-color);
+}
+
+.game-title {
+    font-size: 1.8rem;
+    color: var(--success-color);
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.game-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.game-info p {
+    margin: 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.game-info strong {
+    color: var(--success-color);
+}
+
+.game-description {
+    padding: 0 1.5rem 1rem;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.game-footer {
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== BUTTONS ==================== */
+.download-btn,
+.info-btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, var(--highlight-color), #ff4757);
+    color: white;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+}
+
+.info-btn {
+    background: rgba(0, 212, 255, 0.2);
+    color: var(--success-color);
+    border: 2px solid var(--success-color);
+}
+
+.info-btn:hover {
+    background: var(--success-color);
+    color: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+}
+
+/* ==================== ABOUT SECTION ==================== */
+.about {
+    background: linear-gradient(180deg, rgba(22, 33, 62, 0.8) 0%, rgba(15, 52, 96, 0.6) 100%);
+    padding: 4rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    margin: 2rem auto;
+}
+
+.about-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--success-color);
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 212, 255, 0.1);
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.feature:hover {
+    border-color: var(--success-color);
+    background: rgba(0, 212, 255, 0.2);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.feature p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    text-align: center;
+    border-top: 3px solid var(--highlight-color);
+    margin-top: 4rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+    color: var(--text-muted);
+}
+
+.footer-content a {
+    color: var(--success-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-content a:hover {
+    color: var(--highlight-color);
+    text-decoration: underline;
+}
+
+/* ==================== MODAL ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+    margin: 5% auto;
+    padding: 2rem;
+    border: 2px solid var(--highlight-color);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(233, 69, 96, 0.4);
+    animation: slideUp 0.3s ease;
+}
+
+.modal-content h2 {
+    color: var(--success-color);
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    color: var(--text-color);
+    margin: 0.5rem 0;
+}
+
+.close {
+    color: var(--text-muted);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close:hover {
+    color: var(--highlight-color);
+}
+
+.modal-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, var(--highlight-color), #ff4757);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.5);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .nav-list {
+        gap: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-footer {
+        flex-direction: column;
+    }
+}
